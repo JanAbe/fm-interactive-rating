@@ -39,7 +39,7 @@ body {
 .card {
   background-color: var(--dark-blue);
   padding: 1.5rem;
-  max-width: 350px;
+  max-width: 25rem;
   border-radius: 20px;
   margin: 1.5rem;
 }
@@ -54,8 +54,11 @@ body {
   color: var(--white);
 }
 
-.card p {
+.card fieldset {
   color: var(--light-grey);
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .scores {
@@ -64,23 +67,55 @@ body {
   margin: 1rem 0 1rem 0;
 }
 
-.score {
-  background-color: hsl(213, 19%, 23%);
-  border-radius: 999px;
-  width: 40px;
-  line-height: 40px;
-  text-align: center;
-}
-
-.score:hover {
-  background-color: var(--orange);
-  color: var(--white);
-  cursor: pointer;
-}
-
 .selected {
-  background-color: var(--light-grey);
-  color: var(--white) !important; /* why is this !important necessary??? */
+  background-color: var(
+    --light-grey
+  ) !important; /* why is this !important necessary? */
+  color: var(--white) !important; /* why is this !important necessary? */
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: hsl(213, 19%, 23%);
+  margin: 0;
+  color: var(--light-grey);
+  border-radius: 50%;
+  width: 3.15em;
+  height: 3.15em;
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]:nth-child(1)::before {
+  content: "1";
+  font-size: 1rem;
+}
+
+input[type="radio"]:nth-child(2)::before {
+  content: "2";
+  font-size: 1rem;
+}
+
+input[type="radio"]:nth-child(3)::before {
+  content: "3";
+  font-size: 1rem;
+}
+
+input[type="radio"]:nth-child(4)::before {
+  content: "4";
+  font-size: 1rem;
+}
+
+input[type="radio"]:nth-child(5)::before {
+  content: "5";
+  font-size: 1rem;
+}
+
+input[type="radio"]:hover {
+  background-color: var(--orange);
+  color: white;
+  cursor: pointer;
 }
 
 button {
@@ -103,7 +138,7 @@ button:hover {
 #selected-score {
   color: var(--orange);
   background-color: hsl(213, 19%, 23%);
-  padding: .5rem;
+  padding: 0.5rem;
   border-radius: 25px;
 }
 
@@ -124,4 +159,5 @@ button:hover {
 
 .thankyou-description {
   text-align: center;
+  color: var(--light-grey);
 }
