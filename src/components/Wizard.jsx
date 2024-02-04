@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { UIContext } from "../store/ui-context.jsx";
+import checkmark from "../assets/images/check-solid.svg";
 
 export const Wizard = () => {
   const { step: currentStep, maxSteps } = useContext(UIContext);
@@ -10,7 +11,7 @@ export const Wizard = () => {
       {steps.map((s, index) => (
         <>
           <li key={index} className={ s === currentStep ? "wizard-item selected-wizard-item" : "wizard-item" }>
-            {s}
+            {(s !== maxSteps && currentStep === maxSteps) ? <img className="checkmark" src={checkmark} alt="checkmark" /> : s}
           </li>
         </>
       ))}

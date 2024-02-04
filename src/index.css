@@ -158,6 +158,10 @@ body {
   font-family: "overpass", sans-serif;
 }
 
+.checkmark {
+  width: 1.5rem;
+}
+
 .card-wrapper {
   display: flex;
   justify-content: center;
