@@ -1,8 +1,22 @@
 import star from "../assets/images/icon-star.svg";
+import { useContext } from "react";
+import { RatingContext } from "../store/rating-context.jsx";
+import { UIContext } from "../store/ui-context.jsx";
 
-export const RatingForm = ({ onSubmit, selectedScore, onSelectScore }) => {
+export const RatingForm = () => {
+  const { selectedRating, selectRating } = useContext(RatingContext);
+  const { selectStep } = useContext(UIContext);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    if (selectedRating) {
+      selectStep((prevState) => prevState + 1);
+    }
+  }
+
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       <img className="star" src={star} alt="star symbol" />
       <h1>How did we do?</h1>
 
@@ -13,39 +27,39 @@ export const RatingForm = ({ onSubmit, selectedScore, onSelectScore }) => {
         </legend>
         <div className="scores">
           <input
-            aria-label="A rating of one"
+            aria-label="one"
             type="radio"
             name="rating"
-            className={selectedScore === 1 ? "selected" : ""}
-            onClick={() => onSelectScore(1)}
+            className={selectedRating === 1 ? "selected" : ""}
+            onClick={() => selectRating(1)}
           />
           <input
-            aria-label="A rating of two"
+            aria-label="two"
             type="radio"
             name="rating"
-            className={selectedScore === 2 ? "selected" : ""}
-            onClick={() => onSelectScore(2)}
+            className={selectedRating === 2 ? "selected" : ""}
+            onClick={() => selectRating(2)}
           />
           <input
-            aria-label="A rating of three"
+            aria-label="three"
             type="radio"
             name="rating"
-            className={selectedScore === 3 ? "selected" : ""}
-            onClick={() => onSelectScore(3)}
+            className={selectedRating === 3 ? "selected" : ""}
+            onClick={() => selectRating(3)}
           />
           <input
-            aria-label="A rating of four"
+            aria-label="four"
             type="radio"
             name="rating"
-            className={selectedScore === 4 ? "selected" : ""}
-            onClick={() => onSelectScore(4)}
+            className={selectedRating === 4 ? "selected" : ""}
+            onClick={() => selectRating(4)}
           />
           <input
-            aria-label="A rating of five"
+            aria-label="five"
             type="radio"
             name="rating"
-            className={selectedScore === 5 ? "selected" : ""}
-            onClick={() => onSelectScore(5)}
+            className={selectedRating === 5 ? "selected" : ""}
+            onClick={() => selectRating(5)}
           />
         </div>
       </fieldset>

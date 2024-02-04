@@ -68,10 +68,10 @@ body {
 }
 
 .selected {
-  background-color: var(
-    --light-grey
-  ) !important; /* why is this !important necessary? */
-  color: var(--white) !important; /* why is this !important necessary? */
+  /* why is this !important necessary? */
+  background-color: var(--light-grey) !important;
+  /* why is this !important necessary? */
+  color: var(--white) !important;
 }
 
 input[type="radio"] {
