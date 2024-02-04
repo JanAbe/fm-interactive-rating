@@ -186,6 +186,7 @@ body {
 .card h1 {
   color: var(--white);
   margin-top: 1.5rem;
+  font-size: 2rem;
 }
 
 .card fieldset {
