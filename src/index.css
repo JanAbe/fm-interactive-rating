@@ -1,12 +1,99 @@
-@font-face {
-  font-family: "overpass";
-  src: url("./assets/fonts/Overpass/Overpass-VariableFont_wght.ttf");
-}
-
+/*css reset*/
+/* Box sizing rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/*end css reset*/
+
+@font-face {
+  font-family: "overpass";
+  src: url("./assets/fonts/Overpass/Overpass-VariableFont_wght.ttf");
 }
 
 :root {
@@ -20,7 +107,49 @@
 }
 
 p {
-  font-size: 15px;
+  font-size: 0.938rem;
+}
+
+.wizard {
+  padding: 0;
+  list-style-type: none;
+  color: var(--light-grey);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.wizard-item {
+  background-color: var(--light-grey);
+  color: var(--white);
+  width: 3.15rem;
+  height: 3.15rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+
+.wizard-item:hover {
+  background-color: var(--orange);
+  color: var(--white);
+  cursor: pointer;
+}
+
+/* from: https://stackoverflow.com/questions/41326299/horizontal-css-wizard-navigation */
+/* still don't understand how this works and how to not use magic numbers (for the width for example) */
+.marker-line {
+  position: absolute;
+  width: 15%;
+  height: 4px;
+  background-color: var(--orange);
+  top: 50%;
+}
+
+.selected-wizard-item {
+  background-color: var(--orange);
+  color: var(--white);
 }
 
 body {
@@ -33,7 +162,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh;
+  min-height: 100dvh;
 }
 
 .card {
@@ -52,19 +181,25 @@ body {
 
 .card h1 {
   color: var(--white);
+  margin-top: 1.5rem;
 }
 
 .card fieldset {
   color: var(--light-grey);
   border: none;
   padding: 0;
-  margin: 0;
+}
+
+.card fieldset legend {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .scores {
   display: flex;
   justify-content: space-between;
   margin: 1rem 0 1rem 0;
+  flex-wrap: wrap;
 }
 
 .selected {
@@ -136,9 +271,10 @@ button:hover {
 }
 
 #selected-score {
+  margin-bottom: 1rem;
   color: var(--orange);
   background-color: hsl(213, 19%, 23%);
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   border-radius: 25px;
 }
 
@@ -151,6 +287,7 @@ button:hover {
 
 .thankyou-card-content > h1 {
   margin-bottom: 0;
+  font-size: 2rem;
 }
 
 .thankyou-card-content > img {
@@ -159,5 +296,20 @@ button:hover {
 
 .thankyou-description {
   text-align: center;
+  font-size: 1rem;
   color: var(--light-grey);
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--orange);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 55em) {
+  .card {
+    min-height: 33rem;
+  }
 }

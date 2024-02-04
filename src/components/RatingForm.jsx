@@ -17,7 +17,7 @@ export const RatingForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <img className="star" src={star} alt="star symbol" />
+      <img className="star" src={star} alt="" />
       <h1>How did we do?</h1>
 
       <fieldset>

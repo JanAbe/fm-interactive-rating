@@ -27,6 +27,7 @@ function App() {
 
   const uiContextValue = {
     step: step,
+    maxSteps: 2,
     selectStep: handleSelectStep,
   };
 
